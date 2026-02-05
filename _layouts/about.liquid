@@ -1,8 +1,11 @@
 ---
 layout: default
 ---
+<!-- Particle background -->
+<canvas id="particles-canvas"></canvas>
+
 <div class="post">
-  <header class="post-header">
+  <header class="post-header fade-in-up">
     <h1 class="post-title">
       {% if site.title == 'blank' %}
         <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
@@ -11,7 +14,7 @@ layout: default
         {{ site.title }}
       {% endif %}
     </h1>
-    <p class="desc">{{ page.subtitle }}</p>
+    <p class="desc" id="typed-subtitle" data-text="{{ page.subtitle }}"></p>
   </header>
 
   <article>
@@ -38,35 +41,41 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="clearfix">{{ content }}</div>
+    <div class="clearfix fade-in-up">{{ content }}</div>
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-      </h2>
-      {% include news.liquid limit=true %}
+      <div class="fade-in-up">
+        <h2>
+          <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+        </h2>
+        {% include news.liquid limit=true %}
+      </div>
     {% endif %}
 
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
+      <div class="fade-in-up">
+        <h2>
+          <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+        </h2>
+        {% include latest_posts.liquid %}
+      </div>
     {% endif %}
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-      </h2>
+      <div class="fade-in-up">
+        <h2>
+          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+        </h2>
       {% include selected_papers.liquid %}
+      </div>
     {% endif %}
 
     <!-- Social -->
     {% if page.social %}
-      <div class="social">
+      <div class="social fade-in-up">
         <div class="contact-icons">{% social_links %}</div>
 
         <div class="contact-note">{{ site.contact_note }}</div>
@@ -78,3 +87,103 @@ layout: default
     {% endif %}
   </article>
 </div>
+
+<!-- Typing effect + fade-in + particles -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Typing effect for subtitle
+  var el = document.getElementById('typed-subtitle');
+  if (el) {
+    var text = el.getAttribute('data-text') || '';
+    el.textContent = '';
+    var cursor = document.createElement('span');
+    cursor.className = 'typing-cursor';
+    el.appendChild(cursor);
+    var i = 0;
+    function typeChar() {
+      if (i < text.length) {
+        el.insertBefore(document.createTextNode(text.charAt(i)), cursor);
+        i++;
+        setTimeout(typeChar, 60);
+      } else {
+        setTimeout(function () { cursor.style.display = 'none'; }, 2000);
+      }
+    }
+    setTimeout(typeChar, 500);
+  }
+
+  // Fade-in-up on scroll (IntersectionObserver)
+  var faders = document.querySelectorAll('.fade-in-up');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    faders.forEach(function (el) { obs.observe(el); });
+  } else {
+    faders.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  // Particles
+  var canvas = document.getElementById('particles-canvas');
+  if (canvas) {
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var count = 50;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    for (var p = 0; p < count; p++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 0.5,
+        dx: (Math.random() - 0.5) * 0.4,
+        dy: (Math.random() - 0.5) * 0.4
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var color = isDark ? 'rgba(119,141,169,' : 'rgba(27,38,59,';
+
+      for (var i = 0; i < particles.length; i++) {
+        var a = particles[i];
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+        ctx.fillStyle = color + '0.5)';
+        ctx.fill();
+        a.x += a.dx;
+        a.y += a.dy;
+        if (a.x < 0 || a.x > canvas.width) a.dx *= -1;
+        if (a.y < 0 || a.y > canvas.height) a.dy *= -1;
+
+        for (var j = i + 1; j < particles.length; j++) {
+          var b = particles[j];
+          var dist = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = color + (0.15 * (1 - dist / 120)) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+});
+</script>
