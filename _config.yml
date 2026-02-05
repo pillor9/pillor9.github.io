@@ -17,6 +17,7 @@ keywords: computer-science, electrical-engineering, embedded-systems, edge-ai, p
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: "\U0001F4BB" # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
+
 url: https://pillor9.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: false # set to true if you want to display last updated in the footer
