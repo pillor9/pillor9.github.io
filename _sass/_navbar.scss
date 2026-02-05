@@ -9,6 +9,13 @@
   border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color);
   opacity: 0.95;
+
+  // Frosted glass effect in dark mode
+  html[data-theme="dark"] & {
+    background-color: rgba(28, 28, 29, 0.75);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+  }
 }
 
 .navbar .dropdown-menu,
