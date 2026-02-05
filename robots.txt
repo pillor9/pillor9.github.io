@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://pillor9.github.io/sitemap.xml
