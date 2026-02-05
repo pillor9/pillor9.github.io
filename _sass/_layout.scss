@@ -131,6 +131,188 @@ body.sticky-bottom-footer {
   }
 }
 
+// ============================================================
+// Education card
+// ============================================================
+
+.edu-card {
+  display: flex;
+  align-items: center;
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.edu-logo {
+  flex-shrink: 0;
+  margin-right: 1.5rem;
+
+  img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: rotate(-5deg) scale(1.08);
+  }
+}
+
+.edu-info {
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--global-text-color);
+  }
+
+  .edu-degree {
+    font-size: 0.95rem;
+    color: var(--global-theme-color);
+    margin-bottom: 0.15rem;
+    font-weight: 500;
+  }
+
+  .edu-detail {
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+    margin-bottom: 0.15rem;
+  }
+}
+
+.edu-stats {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.edu-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  i {
+    font-size: 0.75rem;
+  }
+
+  &.gpa {
+    background: rgba(27, 38, 59, 0.08);
+    color: #1B263B;
+
+    html[data-theme="dark"] & {
+      background: rgba(119, 141, 169, 0.15);
+      color: #778DA9;
+    }
+  }
+
+  &.rank {
+    background: rgba(65, 90, 119, 0.08);
+    color: #415A77;
+
+    html[data-theme="dark"] & {
+      background: rgba(65, 90, 119, 0.2);
+      color: #778DA9;
+    }
+  }
+}
+
+// ============================================================
+// Awards list
+// ============================================================
+
+.awards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.award-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+  transition: background-color 0.2s ease, padding-left 0.3s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    padding-left: 0.5rem;
+    background-color: rgba(27, 38, 59, 0.03);
+
+    html[data-theme="dark"] & {
+      background-color: rgba(119, 141, 169, 0.05);
+    }
+  }
+}
+
+.award-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 1rem;
+  background: linear-gradient(135deg, #1B263B, #415A77);
+  color: #fff;
+  font-size: 0.8rem;
+
+  html[data-theme="dark"] & {
+    background: linear-gradient(135deg, #415A77, #778DA9);
+  }
+}
+
+.award-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.award-title {
+  font-size: 0.95rem;
+  color: var(--global-text-color);
+  font-weight: 500;
+}
+
+.award-year {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  color: var(--global-text-color-light);
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 12px;
+  background: rgba(27, 38, 59, 0.06);
+
+  html[data-theme="dark"] & {
+    background: rgba(119, 141, 169, 0.1);
+  }
+}
+
 // Content layout uses Bootstrap's grid system with responsive columns
 // Main content flows naturally through container-mt-5 and Bootstrap grid classes
 // See _layouts/default.liquid and _includes/projects.liquid for examples

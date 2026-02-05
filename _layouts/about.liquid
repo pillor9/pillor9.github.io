@@ -43,6 +43,59 @@ layout: default
 
     <div class="clearfix fade-in-up">{{ content }}</div>
 
+    <!-- Education -->
+    {% if page.education %}
+      <div class="fade-in-up">
+        <h2>
+          <i class="fa-solid fa-graduation-cap" style="margin-right: 0.3rem;"></i>education
+        </h2>
+        {% for edu in page.education %}
+          <div class="edu-card">
+            {% if edu.logo %}
+              <div class="edu-logo">
+                <img
+                  src="{{ edu.logo | prepend: 'assets/img/' | relative_url }}"
+                  alt="{{ edu.institution }}"
+                >
+              </div>
+            {% endif %}
+            <div class="edu-info">
+              <h3>{{ edu.institution }}</h3>
+              <p class="edu-degree">{{ edu.degree }}</p>
+              <p class="edu-detail">{{ edu.department }}</p>
+              <p class="edu-detail">{{ edu.group }} &middot; {{ edu.year }}</p>
+              <div class="edu-stats">
+                <span class="edu-badge gpa"><i class="fa-solid fa-chart-line"></i> GPA: {{ edu.gpa }}</span>
+                <span class="edu-badge rank"><i class="fa-solid fa-ranking-star"></i> {{ edu.ranking }}</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Awards -->
+    {% if page.awards %}
+      <div class="fade-in-up">
+        <h2>
+          <i class="fa-solid fa-trophy" style="margin-right: 0.3rem;"></i>awards
+        </h2>
+        <div class="awards-list">
+          {% for award in page.awards %}
+            <div class="award-item">
+              <div class="award-icon">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div class="award-content">
+                <span class="award-title">{{ award.title }}</span>
+                <span class="award-year">{{ award.year }}</span>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <div class="fade-in-up">
