@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: CS & EE | Embedded Systems | Edge AI
+subtitle: Efficient AI | AI Infrastructure | ML Systems
 
 profile:
   align: right
@@ -29,7 +29,7 @@ education:
     logo: school.png
     degree: B.Eng. in Information Engineering
     department: College of Information Science and Electronic Engineering
-    group: Shannon Class
+    group: 2024 Cohort, Shannon Excellence Program
     year: 2024 – 2028
     gpa: "4.78 / 5.00"
     ranking: Top 3 in major
@@ -45,12 +45,10 @@ awards:
     year: 2024
 ---
 
-I am an undergraduate student majoring in **Information Engineering** at the College of Information Science and Electronic Engineering, **Zhejiang University**, and a selected member of the Shannon Class. I maintain a GPA of **4.78/5.00**, ranking among the **top three** students in my major.
+I am an undergraduate student majoring in **Information Engineering** at the College of Information Science and Electronic Engineering, **Zhejiang University**, and was selected for the **2024 cohort of the Shannon Excellence Program**. I maintain a GPA of **4.78/5.00**, ranking among the **top three** students in my major.
 
-I have a strong cross-disciplinary background in **Computer Science** and **Electrical Engineering**, with research interests centered on **embedded systems**, **signal processing**, and **edge AI deployment**. My work focuses on bridging the gap between software and hardware to bring intelligent algorithms onto resource-constrained platforms.
+My research interests lie in **Efficient AI** and **AI infrastructure**. I am currently working on the optimization and deployment of edge models, as well as machine learning compilers. More broadly, I am interested in the co-design of algorithms, compiler and runtime systems, and hardware for efficient AI computing.
 
-On the computer science side, I am proficient in C++ and Python, and experienced with building reproducible development environments using tools such as Docker and uv. I have hands-on experience deploying deep learning models on edge devices, particularly using NVIDIA Jetson platforms and TensorRT, and am deeply interested in kernel-level optimization and runtime performance on mobile and embedded hardware.
+I have a cross-disciplinary background in computer science and electrical engineering, with experience in software development, embedded systems, and hardware-aware optimization. This background helps me approach AI systems from both algorithmic and system-level perspectives.
 
-On the electrical engineering side, I have a solid foundation in analog circuit design, including multi-stage BJT operational amplifier architectures, as well as electromagnetic theory based on Maxwell's equations and signal processing. This background allows me to understand system behavior from both circuit-level and algorithmic perspectives.
-
-I am highly motivated to pursue research that integrates algorithms, operators, and hardware, and to explore system-level co-design for efficient and scalable edge intelligence.
+Outside research, I enjoy playing table tennis and value the focus, persistence, and teamwork that the sport brings.
