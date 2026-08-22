@@ -415,6 +415,12 @@ ninja.data = [{
             },},{id: "news-personal-website-launched-built-with-al-folio-template-on-jekyll",
           title: 'Personal website launched! Built with al-folio template on Jekyll.',
           description: "",
+          section: "News",},{id: "news-our-paper-mobilekernelbench-can-llms-write-efficient-kernels-for-mobile-devices-is-now-available-on-arxiv",
+          title: 'Our paper, MobileKernelBench: Can LLMs Write Efficient Kernels for Mobile Devices?, is now...',
+          description: "",
+          section: "News",},{id: "news-our-paper-lvomnibench-pioneering-long-audio-video-understanding-evaluation-for-omnimodal-llms-is-now-available-on-arxiv",
+          title: 'Our paper, LVOmniBench: Pioneering Long Audio-Video Understanding Evaluation for Omnimodal LLMs, is now...',
+          description: "",
           section: "News",},{id: "projects-uav-model-deployment-on-nvidia-jetson",
           title: 'UAV Model Deployment on NVIDIA Jetson',
           description: "Real-time UAV detection using TensorRT and MNN on edge devices with Docker-based deployment pipeline",
@@ -448,6 +454,13 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("https://github.com/pillor9", "_blank");
+        },
+      },{
+        id: 'social-scholar',
+        title: 'Google Scholar',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://scholar.google.com/citations?user=7QEgDqwAAAAJ", "_blank");
         },
       },{
         id: 'social-rss',
