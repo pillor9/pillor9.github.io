@@ -36,7 +36,9 @@ education:
 
 awards:
   - title: National Scholarship
+    year: 2026
   - title: First-Class Scholarship, Zhejiang University
+    year: 2026
   - title: Zhejiang Provincial Government Scholarship
     year: 2025
   - title: "Second Prize, National Undergraduate Mathematics Competition (CMC)"
