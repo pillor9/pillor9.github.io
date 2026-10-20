@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f1f7fc" />
+    <title>EdgeKernelBench · Kernel generation at the edge</title>
+    <meta
+      name="description"
+      content="EdgeKernelBench: Unified LLM-Driven Kernel Generation for Edge Backends. A TVM-based benchmark for kernel generation on heterogeneous edge devices, with layered optimization through LEKA."
+    />
+    <link rel="canonical" href="https://pillor9.github.io/EdgeKernelBench/" />
+    <link rel="icon" type="image/png" href="assets/icon-ek.png" />
+    <link rel="apple-touch-icon" href="assets/icon-ek.png" />
+    <link rel="stylesheet" href="styles.css?v=20261020" />
+  </head>
+  <body>
+    <a class="skip" href="#abstract">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav wrap" aria-label="Main navigation">
+        <a class="wordmark" href="#"><img src="assets/icon-ek.png" width="40" height="40" alt="" />EdgeKernelBench</a>
+        <div class="nav-links">
+          <a href="#news">News</a><a href="#abstract">Abstract</a><a href="#overview">Overview</a><a href="#results">Results</a
+          ><a href="#leka">LEKA</a><a class="nav-code" href="#resources">Resources</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap">
+          <div class="hero-brand">
+            <div class="hero-emblem">
+              <img src="assets/icon-ek.png" width="112" height="112" alt="EdgeKernelBench: E and K share a letterform inside a chip" />
+            </div>
+            <h1 id="hero-title">Edge<span>Kernel</span>Bench</h1>
+          </div>
+          <p class="hero-subtitle">Unified LLM-Driven Kernel Generation <br />for Edge Backends</p>
+          <div class="author-block">
+            <div class="authors" aria-label="Authors">
+              <span><a href="https://pillor9.github.io/">Yuhua Zheng</a><sup>1,2,‡</sup></span
+              ><span>Xueyi Chen<sup>2,‡</sup></span
+              ><span>Xinze Zou<sup>1</sup></span
+              ><span>Xin Li<sup>1,2</sup></span
+              ><span>Haoji Hu<sup>1,*</sup></span
+              ><span>Huan Wang<sup>2,*</sup></span>
+            </div>
+            <p class="affiliations">
+              <span><sup>1</sup> Zhejiang University</span><span><sup>2</sup> Westlake University</span>
+            </p>
+            <p class="author-notes">
+              <span><sup>‡</sup> Equal contribution</span><span><sup>*</sup> Corresponding authors</span>
+            </p>
+          </div>
+          <div class="institution-logos" aria-label="Universities and laboratory">
+            <a class="institution zju" href="https://www.zju.edu.cn/english/" target="_blank" rel="noopener" aria-label="Zhejiang University">
+              <img src="assets/zhejiang-university.svg" width="76" height="76" alt="Zhejiang University seal" />
+            </a>
+            <a class="institution westlake" href="https://en.westlake.edu.cn/" target="_blank" rel="noopener" aria-label="Westlake University">
+              <img src="assets/westlake-university.png" width="68" height="68" alt="Westlake University emblem" />
+            </a>
+            <a class="institution encode" href="https://westlake-encode-lab.github.io/" target="_blank" rel="noopener" aria-label="ENCODE Lab">
+              <img src="assets/encode-lab.png" width="236" height="62" alt="ENCODE Lab — Efficient Neural Computing and Design" />
+            </a>
+          </div>
+          <div class="actions">
+            <a class="button primary" href="https://arxiv.org/abs/2610.24648" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z M14 3v5h5 M9 12h6 M9 16h6" /></svg
+              >Read the paper</a
+            ><button class="button unavailable" type="button" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16" /></svg
+              ><span class="resource-label"><strong>Code</strong><small>Coming soon</small></span></button
+            ><a class="button button-quiet" href="#results">Explore results <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+      </section>
+      <section id="news" class="news-section wrap" aria-labelledby="news-title">
+        <h2 id="news-title">News</h2>
+        <div class="news-items">
+          <p><time datetime="2026-10-20">Oct 2026</time><span>The EdgeKernelBench project website is now available.</span></p>
+          <p>
+            <time datetime="2026-10-17">Oct 2026</time
+            ><span>Our paper is now available on <a href="https://arxiv.org/abs/2610.24648" target="_blank" rel="noopener">arXiv</a>.</span>
+          </p>
+        </div>
+      </section>
+      <section id="abstract" class="abstract-section wrap" aria-labelledby="abstract-title">
+        <div class="section-heading centered">
+          <p class="eyebrow">The research</p>
+          <h2 id="abstract-title">Abstract</h2>
+        </div>
+        <div class="abstract-copy">
+          <p>
+            Recent works show that LLMs can generate kernels with strong performance on server GPUs. Edge deployment presents distinct challenges
+            because the hardware is heterogeneous, the software stacks are fragmented, and the resource budgets are tight. LLM kernel generation
+            across diverse edge backends has yet to be studied systematically.
+          </p>
+          <p>
+            We introduce <strong>EdgeKernelBench</strong>, which combines a unified IR deployment framework with a hierarchical benchmark for edge
+            workloads. The unified IR captures reusable computation, scheduling, and memory decisions and connects to each target backend through a
+            compiler interface. The benchmark spans progressively larger program scopes, from individual operators to compact model graphs, across
+            representative edge application domains. We instantiate the design with TVM as a reference compiler and validate it across heterogeneous
+            edge backends.
+          </p>
+          <p>
+            With a single generation attempt, the best model achieves 64.5% Correct@1 but only 25.5% Fast@1.0. This gap shows that functional
+            correctness does not consistently translate into performance gains. We therefore introduce the
+            <strong>Layered Edge Kernel Agent (LEKA)</strong>, which organizes optimization through a layered IR. On the agent evaluation subset, LEKA
+            achieves 43.5% Fast@1.0, compared with 13.0% for direct generation and 26.1% for Claude Code. LEKA and Claude Code use the same base model
+            and optimization budget. Together, EdgeKernelBench and LEKA support unified evaluation and layered optimization of kernels generated by
+            LLMs across edge backends.
+          </p>
+        </div>
+      </section>
+      <section id="overview" class="section wrap">
+        <div class="section-heading">
+          <p class="eyebrow">The benchmark</p>
+          <h2>A unified benchmark<br /><span>for edge workloads.</span></h2>
+        </div>
+        <div class="overview-intro">
+          <p class="intro-copy">
+            EdgeKernelBench evaluates LLM-generated kernels for heterogeneous edge devices, from individual operators to compact model graphs. A
+            unified intermediate representation connects generation to compilation and evaluation on real hardware through TVM.
+          </p>
+          <div class="scope-grid">
+            <div><strong>128</strong><span>Individual operators</span></div>
+            <div><strong>162</strong><span>Operator compositions</span></div>
+            <div><strong>41</strong><span>Compact model graphs</span></div>
+          </div>
+        </div>
+        <figure class="paper-figure">
+          <button class="figure-image" data-figure="benchmark" aria-label="Enlarge benchmark framework figure">
+            <img
+              src="assets/benchmark.webp"
+              width="3000"
+              height="1290"
+              alt="EdgeKernelBench task construction, unified kernel generation, and evaluation on heterogeneous edge devices."
+              loading="lazy"
+            />
+          </button>
+          <figcaption><span>The EdgeKernelBench framework.</span><button class="text-button" data-figure="benchmark">Enlarge</button></figcaption>
+        </figure>
+        <div class="hardware-block">
+          <h3 class="hardware-heading">Devices evaluated <br />in the paper</h3>
+          <div class="hardware-grid" aria-label="Devices evaluated in the paper">
+            <div>
+              <h3>CPU / LLVM</h3>
+              <p>Snapdragon 8 Gen 3<br /><span>Mobile intelligence</span></p>
+            </div>
+            <div>
+              <h3>GPU / CUDA</h3>
+              <p>Jetson AGX Orin<br /><span>Embodied robotics</span></p>
+            </div>
+            <div>
+              <h3>GPU / OpenCL</h3>
+              <p>RK3588 · Mali-G610<br /><span>Smart AIoT</span></p>
+            </div>
+          </div>
+        </div>
+        <details class="details">
+          <summary>Task coverage</summary>
+          <p>
+            The 331 canonical tasks yield 650 backend-specific instances: 204 on CPU/LLVM, 218 on GPU/CUDA, and 228 on GPU/OpenCL. Input shapes are
+            adapted to each deployment setting.
+          </p>
+        </details>
+      </section>
+      <section id="results" class="section section-tint">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="eyebrow">Measured on real devices</p>
+            <h2>Results</h2>
+          </div>
+          <div class="subsection-intro">
+            <h3 class="result-heading">One-shot generation</h3>
+            <p class="section-lead">
+              The strongest model, GPT-5.6-sol, achieves <strong>64.5% correctness</strong> and <strong>25.5% Fast@1.0</strong> across all 650 task
+              instances.
+            </p>
+          </div>
+          <div class="leaderboard">
+            <div class="table-toolbar">
+              <div class="table-filters">
+                <label
+                  >Backend<select id="backend-filter" aria-label="Backend">
+                    <option value="all">All backends</option>
+                    <option value="cpu">CPU / LLVM</option>
+                    <option value="cuda">GPU / CUDA</option>
+                    <option value="opencl">GPU / OpenCL</option>
+                  </select></label
+                ><label
+                  >Level<select id="level-filter" aria-label="Task scope">
+                    <option value="all">All levels</option>
+                    <option value="1">Level 1 · Operators</option>
+                    <option value="2">Level 2 · Compositions</option>
+                    <option value="3">Level 3 · Model graphs</option>
+                  </select></label
+                >
+              </div>
+              <a class="text-button" href="assets/one-shot-results.csv" download>CSV</a>
+            </div>
+            <p id="table-scope" class="table-scope" aria-live="polite">650 task instances per model</p>
+            <div class="table-scroll" role="region" aria-label="One-shot benchmark results" tabindex="0">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Model</th>
+                    <th scope="col" aria-sort="none">
+                      <button data-sort="compile">Compile@1 <span>↕</span></button>
+                    </th>
+                    <th scope="col" aria-sort="none">
+                      <button data-sort="correct">Correct@1 <span>↕</span></button>
+                    </th>
+                    <th scope="col" aria-sort="descending">
+                      <button data-sort="fast">Fast@1.0 <span>↓</span></button>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="results-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <p class="metric-note">Fast@1.0: correct and faster than TVM with MetaSchedule.</p>
+          <details class="details">
+            <summary>Evaluation details</summary>
+            <p>
+              Compile@1 measures compilation success. Correct@1 also requires all output checks to pass. Fast@1.0 additionally requires valid timings
+              and speedup above 1×. All scores are percentages.
+            </p>
+          </details>
+          <div id="figures" class="engine-results">
+            <div class="subsection-intro">
+              <h3>MNN &amp; TensorRT <br />comparison</h3>
+              <p class="section-lead">
+                One-shot kernels are compared with MNN 3.3.0 and TensorRT 10.3.0 on the same devices. Gains are concentrated in individual operators.
+              </p>
+            </div>
+            <figure class="paper-figure">
+              <button class="figure-image" data-figure="fastp" aria-label="Enlarge results against MNN and TensorRT">
+                <img
+                  src="assets/fastp.webp"
+                  width="3000"
+                  height="900"
+                  alt="Fast@p curves for one-shot kernels against MNN on CPU and OpenCL GPU, and TensorRT on CUDA GPU, across all three task levels."
+                  loading="lazy"
+                />
+              </button>
+              <figcaption>
+                <span>Fast@p on fixed, engine-supported task subsets.</span><button class="text-button" data-figure="fastp">Enlarge</button>
+              </figcaption>
+            </figure>
+            <details class="details">
+              <summary>Comparison details</summary>
+              <p>
+                Each curve shows the share of tasks with correct outputs, valid timings, and speedup above p. At p = 0, it measures correctness with
+                valid timings. Each engine uses its own fixed supported subset, so these percentages have different denominators from the TVM results
+                above.
+              </p>
+              <p><a href="assets/fastp.pdf" target="_blank" rel="noopener">Open full-resolution results</a></p>
+            </details>
+          </div>
+        </div>
+      </section>
+      <section id="leka" class="section wrap">
+        <div class="section-heading">
+          <p class="eyebrow">The optimization framework</p>
+          <h2>Layered optimization <span>with LEKA.</span></h2>
+        </div>
+        <p class="section-lead leka-intro">
+          LEKA coordinates agents across Relax, TIR, and target code, using hardware feedback and a shared candidate tree.
+        </p>
+        <div class="layers">
+          <div>
+            <span class="layer-node" aria-hidden="true"></span>
+            <h3>Relax</h3>
+            <p>Graph structure and layout</p>
+          </div>
+          <div>
+            <span class="layer-node" aria-hidden="true"></span>
+            <h3>TIR</h3>
+            <p>Scheduling and memory reuse</p>
+          </div>
+          <div>
+            <span class="layer-node" aria-hidden="true"></span>
+            <h3>Target code</h3>
+            <p>Hardware-specific refinement</p>
+          </div>
+        </div>
+        <figure class="paper-figure">
+          <button class="figure-image" data-figure="agent" aria-label="Enlarge LEKA framework figure">
+            <img
+              src="assets/agent.webp"
+              width="3000"
+              height="1350"
+              alt="LEKA's layered agents, shared candidate tree, and hardware feedback loop."
+              loading="lazy"
+            />
+          </button>
+          <figcaption><span>The LEKA optimization framework.</span><button class="text-button" data-figure="agent">Enlarge</button></figcaption>
+        </figure>
+        <div class="agent-heading">
+          <h3>Agent comparison</h3>
+          <p>69 instances · 23 per backend · GLM-5.3-Flash</p>
+        </div>
+        <div class="segmented" role="group" aria-label="Agent comparison backend">
+          <button data-agent="all" aria-pressed="true">All backends</button><button data-agent="cpu" aria-pressed="false">CPU / LLVM</button
+          ><button data-agent="cuda" aria-pressed="false">GPU / CUDA</button><button data-agent="opencl" aria-pressed="false">GPU / OpenCL</button>
+        </div>
+        <div class="agent-results" aria-live="polite">
+          <div class="bar-panel">
+            <div class="chart-heading">
+              <h4>Fast@1.0 over TVM</h4>
+              <span id="agent-n">69 instances</span>
+            </div>
+            <div id="agent-bars"></div>
+            <div class="chart-axis"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+          </div>
+          <div class="agent-stats">
+            <div>
+              <span>LEKA correctness</span><strong id="agent-correct">100<small>%</small></strong>
+              <p id="agent-correct-note">One-shot: 42.0%</p>
+            </div>
+            <div>
+              <span>Geometric mean speedup</span><strong id="agent-gm">3.75<small>×</small></strong>
+              <p>Relative to Claude Code</p>
+            </div>
+          </div>
+        </div>
+        <details class="details">
+          <summary>Comparison details</summary>
+          <p>
+            Fast@1.0 measures correct programs that outperform TVM with MetaSchedule. LEKA and Claude Code use the same base model, task contracts,
+            evaluator, and per-task time budgets. Geometric mean speedup includes slower results. The paper rounds the overall 3.75× value to 3.8×.
+          </p>
+          <p>
+            <a href="assets/leka-results.csv" download>Download comparison data</a> ·
+            <button class="text-button" data-figure="results">View full results</button>
+          </p>
+        </details>
+        <div class="case-section">
+          <div class="case-heading">
+            <div>
+              <p class="eyebrow">Optimization in practice</p>
+              <h3>Compact SqueezeNet1.1 on RK3588</h3>
+            </div>
+            <span class="case-tag">Case study</span>
+          </div>
+          <p class="case-overview">
+            LEKA combines graph rewrites, shared-memory tiling, and register blocking to optimize a compact SqueezeNet1.1 benchmark task. Each stage
+            preserves useful improvements from the preceding layers.
+          </p>
+          <p class="metric-note">Speedup relative to the initial candidate.</p>
+          <div class="case-steps" role="group" aria-label="SqueezeNet optimization stages">
+            <button data-step="0" aria-pressed="false"><span>Initial</span><strong>1.00×</strong></button
+            ><button data-step="1" aria-pressed="false"><span>Relax</span><strong>1.30×</strong></button
+            ><button data-step="2" aria-pressed="false"><span>TIR</span><strong>1.73×</strong></button
+            ><button data-step="3" aria-pressed="true"><span>OpenCL</span><strong>3.47×</strong></button>
+          </div>
+          <p id="case-detail-text" class="case-detail" aria-live="polite">
+            Register blocking improves matrix multiplications while preserving TIR-optimized convolutions.
+          </p>
+          <details class="details case-analysis">
+            <summary>Case analysis</summary>
+            <p>
+              The Relax agent adopts NHWC layout and rewrites 1×1 convolutions as matrix multiplications, creating opportunities for lower-level
+              optimization. Building on this graph, the TIR agent uses shared-memory tiling to reuse convolution inputs.
+            </p>
+            <p>
+              The OpenCL agent then applies register blocking to the matrix multiplications while preserving the TIR-optimized convolutions. Reducing
+              repeated input loads and accumulating results in registers brings the speedup to 3.47× over the initial implementation. The improvements
+              build on one another as each agent refines its part of the computation.
+            </p>
+          </details>
+        </div>
+      </section>
+      <dialog id="figure-dialog" aria-labelledby="dialog-title">
+        <div class="dialog-heading">
+          <h2 id="dialog-title">Figure</h2>
+          <button id="close-dialog" aria-label="Close figure">×</button>
+        </div>
+        <div class="dialog-scroll"><img id="dialog-image" alt="" /></div>
+        <p><a id="dialog-pdf" target="_blank" rel="noopener">Open original PDF</a></p>
+      </dialog>
+    </main>
+    <footer id="resources">
+      <div class="wrap footer-inner">
+        <div class="footer-brand">
+          <a class="wordmark" href="#"><img src="assets/icon-ek.png" width="36" height="36" alt="" />EdgeKernelBench</a>
+          <p>Zhejiang University · Westlake University</p>
+        </div>
+        <nav aria-label="Resources">
+          <a href="https://arxiv.org/pdf/2610.24648" target="_blank" rel="noopener">Paper PDF ↗</a><span>Code · Coming soon</span>
+          <a href="assets/one-shot-results.csv" download>One-shot data ↓</a><a href="assets/leka-results.csv" download>LEKA data ↓</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="app.js?v=20261007"></script>
+  </body>
+</html>
