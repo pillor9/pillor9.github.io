@@ -207,7 +207,7 @@
         <a href="https://hal.science/{{ entry.hal }}" class="btn btn-sm z-depth-0" role="button">HAL</a>
       {% endif %}
       {% if entry.bibtex_show %}
-        <button class="bibtex btn btn-sm z-depth-0" type="button" aria-expanded="false" aria-controls="bibtex-{{ entry.key }}">BibTeX</button>
+        <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
       {% endif %}
       {% if entry.html %}
         {% if entry.html contains '://' %}
@@ -378,7 +378,7 @@
 
     {% if entry.bibtex_show %}
       <!-- Hidden bibtex block -->
-      <div class="bibtex hidden" id="bibtex-{{ entry.key }}" inert>
+      <div class="bibtex hidden">
         {% highlight bibtex %}
         {{- entry.bibtex | hideCustomBibtex -}}
       {% endhighlight %}

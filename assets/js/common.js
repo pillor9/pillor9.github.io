@@ -4,24 +4,16 @@ $(document).ready(function () {
     $(this).parent().parent().find(".abstract.hidden").toggleClass("open");
     $(this).parent().parent().find(".award.hidden.open").toggleClass("open");
     $(this).parent().parent().find(".bibtex.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden").prop("inert", true);
-    $(this).parent().find("button.bibtex").attr("aria-expanded", "false");
   });
   $("a.award").click(function () {
     $(this).parent().parent().find(".abstract.hidden.open").toggleClass("open");
     $(this).parent().parent().find(".award.hidden").toggleClass("open");
     $(this).parent().parent().find(".bibtex.hidden.open").toggleClass("open");
-    $(this).parent().parent().find(".bibtex.hidden").prop("inert", true);
-    $(this).parent().find("button.bibtex").attr("aria-expanded", "false");
   });
-  $("button.bibtex").click(function () {
+  $("a.bibtex").click(function () {
     $(this).parent().parent().find(".abstract.hidden.open").toggleClass("open");
     $(this).parent().parent().find(".award.hidden.open").toggleClass("open");
-    const panel = $(this).parent().parent().find(".bibtex.hidden");
-    panel.toggleClass("open");
-    const expanded = panel.hasClass("open");
-    panel.prop("inert", !expanded);
-    $(this).attr("aria-expanded", String(expanded));
+    $(this).parent().parent().find(".bibtex.hidden").toggleClass("open");
   });
   $("a").removeClass("waves-effect waves-light");
 
