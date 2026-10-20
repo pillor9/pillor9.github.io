@@ -1,0 +1,5 @@
+backend,n,direct,claude,leka,correct,directCorrect,gm
+All backends,69,13.0,26.1,43.5,100.0,42.0,3.75
+CPU / LLVM,23,8.7,21.7,34.8,100.0,39.1,8.6
+GPU / CUDA,23,17.4,26.1,30.4,100.0,47.8,2.46
+GPU / OpenCL,23,13.0,30.4,65.2,100.0,39.1,2.49
