@@ -1,0 +1,46 @@
+model,backend,level,n,compile,correct,fast
+GPT-5.6-sol,cpu,1,91,87.9,82.4,46.2
+GPT-5.6-sol,cpu,2,93,68.8,62.4,15.1
+GPT-5.6-sol,cpu,3,20,60.0,40.0,0.0
+Gemini-3.7-Flash,cpu,1,91,87.9,84.6,37.4
+Gemini-3.7-Flash,cpu,2,93,72.0,58.1,11.8
+Gemini-3.7-Flash,cpu,3,20,75.0,45.0,0.0
+Claude Sonnet 5,cpu,1,91,74.7,67.0,29.7
+Claude Sonnet 5,cpu,2,93,46.2,29.0,2.2
+Claude Sonnet 5,cpu,3,20,45.0,40.0,0.0
+DeepSeek-V4-Pro,cpu,1,91,97.8,94.5,37.4
+DeepSeek-V4-Pro,cpu,2,93,83.9,75.3,3.2
+DeepSeek-V4-Pro,cpu,3,20,55.0,35.0,0.0
+GLM-5.3,cpu,1,91,61.5,42.9,12.1
+GLM-5.3,cpu,2,93,50.5,37.6,5.4
+GLM-5.3,cpu,3,20,50.0,40.0,0.0
+GPT-5.6-sol,cuda,1,98,81.6,79.6,51.0
+GPT-5.6-sol,cuda,2,95,73.7,65.3,13.7
+GPT-5.6-sol,cuda,3,25,40.0,16.0,4.0
+Gemini-3.7-Flash,cuda,1,98,68.4,66.3,44.9
+Gemini-3.7-Flash,cuda,2,95,43.2,40.0,11.6
+Gemini-3.7-Flash,cuda,3,25,68.0,32.0,0.0
+Claude Sonnet 5,cuda,1,98,52.0,49.0,32.7
+Claude Sonnet 5,cuda,2,95,12.6,9.5,0.0
+Claude Sonnet 5,cuda,3,25,12.0,8.0,0.0
+DeepSeek-V4-Pro,cuda,1,98,77.6,69.4,34.7
+DeepSeek-V4-Pro,cuda,2,95,57.9,35.8,4.2
+DeepSeek-V4-Pro,cuda,3,25,16.0,12.0,0.0
+GLM-5.3,cuda,1,98,59.2,39.8,21.4
+GLM-5.3,cuda,2,95,44.2,24.2,4.2
+GLM-5.3,cuda,3,25,16.0,4.0,0.0
+GPT-5.6-sol,opencl,1,98,82.7,73.5,38.8
+GPT-5.6-sol,opencl,2,105,70.5,55.2,7.6
+GPT-5.6-sol,opencl,3,25,28.0,16.0,0.0
+Gemini-3.7-Flash,opencl,1,98,67.3,60.2,32.7
+Gemini-3.7-Flash,opencl,2,105,57.1,49.5,16.2
+Gemini-3.7-Flash,opencl,3,25,56.0,32.0,0.0
+Claude Sonnet 5,opencl,1,98,53.1,46.9,28.6
+Claude Sonnet 5,opencl,2,105,12.4,10.5,0.0
+Claude Sonnet 5,opencl,3,25,4.0,4.0,0.0
+DeepSeek-V4-Pro,opencl,1,98,81.6,65.3,33.7
+DeepSeek-V4-Pro,opencl,2,105,61.0,41.0,5.7
+DeepSeek-V4-Pro,opencl,3,25,20.0,4.0,0.0
+GLM-5.3,opencl,1,98,64.3,35.7,15.3
+GLM-5.3,opencl,2,105,47.6,33.3,11.4
+GLM-5.3,opencl,3,25,20.0,8.0,4.0
