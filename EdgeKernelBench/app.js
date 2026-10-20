@@ -6,6 +6,25 @@ const names = { all: "All backends", cpu: "CPU / LLVM", cuda: "GPU / CUDA", open
 let sortKey = "fast";
 let sortDirection = -1;
 
+const copyCitation = $("#copy-bibtex");
+const citationStatus = $("#citation-status");
+let citationResetTimer;
+copyCitation.addEventListener("click", async () => {
+  clearTimeout(citationResetTimer);
+  try {
+    await navigator.clipboard.writeText($("#bibtex-code").textContent.trim());
+    copyCitation.textContent = "Copied";
+    citationStatus.textContent = "Copied to clipboard.";
+  } catch {
+    copyCitation.textContent = "Copy";
+    citationStatus.textContent = "Select the citation below to copy it.";
+  }
+  citationResetTimer = setTimeout(() => {
+    copyCitation.textContent = "Copy";
+    citationStatus.textContent = "";
+  }, 4000);
+});
+
 function renderTable() {
   const backend = $("#backend-filter").value;
   const level = $("#level-filter").value;

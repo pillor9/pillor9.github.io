@@ -99,7 +99,7 @@
       }
 
       .links {
-        .btn {
+        a.btn {
           color: var(--global-text-color);
           border: 1px solid var(--global-text-color);
           padding-left: 1rem;
@@ -163,23 +163,6 @@
         -ms-transition: 0.15s ease;
         -o-transition: 0.15s ease;
         transition: all 0.15s ease;
-      }
-
-      div.bibtex.hidden {
-        text-align: left;
-
-        pre {
-          padding: 2.5rem 1rem 1rem;
-          border-radius: 0.4rem;
-          white-space: pre-wrap;
-          overflow-wrap: anywhere;
-        }
-
-        .copy {
-          opacity: 1;
-          top: 0.5rem;
-          right: 0.5rem;
-        }
       }
 
       div.abstract.hidden {

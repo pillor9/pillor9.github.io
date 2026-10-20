@@ -1012,6 +1012,60 @@ tbody tr:first-child .mini-bar i {
   border-top: 1px solid #d5e5f0;
 }
 
+.citation-section {
+  padding-block: 64px 78px;
+  border-top: 1px solid var(--line);
+}
+.citation-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.citation-tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.citation-tools button {
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 7px 16px;
+  min-width: 78px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 14px;
+}
+.citation-tools button:hover {
+  border-color: #9bbbd1;
+  background: var(--tint);
+}
+.citation-code {
+  margin: 0;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid #e6ecf1;
+  border-radius: 10px;
+  background: #f5f7f9;
+  color: #405467;
+  font:
+    400 clamp(13px, 1.4vw, 15px)/1.8 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+.citation-code code {
+  font: inherit;
+}
+
 footer {
   border-top: 1px solid #e3edf4;
   background: #f9fbfd;
