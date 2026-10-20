@@ -30,11 +30,11 @@ This project focuses on deploying deep learning models for **UAV (Unmanned Aeria
 
 ### Performance Metrics
 
-| Metric | Before Optimization | After TensorRT INT8 |
-|--------|-------------------|---------------------|
-| Inference Time | ~50ms | ~12ms |
-| Model Size | ~200MB | ~50MB |
-| GPU Memory | ~1.5GB | ~0.5GB |
+| Metric         | Before Optimization | After TensorRT INT8 |
+| -------------- | ------------------- | ------------------- |
+| Inference Time | ~50ms               | ~12ms               |
+| Model Size     | ~200MB              | ~50MB               |
+| GPU Memory     | ~1.5GB              | ~0.5GB              |
 
 ## Docker Environment
 

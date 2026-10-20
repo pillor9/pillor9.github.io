@@ -35,6 +35,8 @@ education:
     ranking: Top 3 in major
 
 awards:
+  - title: National Scholarship
+  - title: First-Class Scholarship, Zhejiang University
   - title: Zhejiang Provincial Government Scholarship
     year: 2025
   - title: "Second Prize, National Undergraduate Mathematics Competition (CMC)"
