@@ -13,13 +13,13 @@ This project involves the design and simulation of a **multi-stage BJT (Bipolar 
 
 ## Design Specifications
 
-| Parameter | Target |
-|-----------|--------|
-| Open-loop Gain | > 80 dB |
-| Unity-gain Bandwidth | > 1 MHz |
-| Phase Margin | > 60° |
-| Slew Rate | > 1 V/us |
-| Power Supply | +/-15 V |
+| Parameter            | Target   |
+| -------------------- | -------- |
+| Open-loop Gain       | > 80 dB  |
+| Unity-gain Bandwidth | > 1 MHz  |
+| Phase Margin         | > 60°    |
+| Slew Rate            | > 1 V/us |
+| Power Supply         | +/-15 V  |
 
 ## Circuit Architecture
 

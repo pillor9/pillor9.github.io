@@ -37,7 +37,9 @@ body.sticky-bottom-footer {
 .profile {
   img {
     width: 100%;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition:
+      transform 0.4s ease,
+      box-shadow 0.4s ease;
 
     &:hover {
       transform: scale(1.03);
@@ -56,7 +58,9 @@ body.sticky-bottom-footer {
 .fade-in-up {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
 
   &.visible {
     opacity: 1;
@@ -76,15 +80,28 @@ body.sticky-bottom-footer {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 // Glow pulse for profile image on page load
 @keyframes glow-pulse {
-  0% { box-shadow: 0 0 5px rgba(27, 38, 59, 0.2); }
-  50% { box-shadow: 0 0 25px rgba(65, 90, 119, 0.35), 0 0 50px rgba(27, 38, 59, 0.1); }
-  100% { box-shadow: 0 0 5px rgba(27, 38, 59, 0.2); }
+  0% {
+    box-shadow: 0 0 5px rgba(27, 38, 59, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 25px rgba(65, 90, 119, 0.35),
+      0 0 50px rgba(27, 38, 59, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(27, 38, 59, 0.2);
+  }
 }
 
 .profile img {
@@ -97,13 +114,13 @@ body.sticky-bottom-footer {
   display: inline-block;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -4px;
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, #1B263B, #415A77, #778DA9, #415A77, #1B263B);
+    background: linear-gradient(90deg, #1b263b, #415a77, #778da9, #415a77, #1b263b);
     background-size: 200% auto;
     animation: gradient-slide 3s linear infinite;
     border-radius: 2px;
@@ -111,8 +128,12 @@ body.sticky-bottom-footer {
 }
 
 @keyframes gradient-slide {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 // Particle canvas (positioned behind content)
@@ -143,7 +164,9 @@ body.sticky-bottom-footer {
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
   margin-bottom: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-3px);
@@ -217,21 +240,21 @@ body.sticky-bottom-footer {
 
   &.gpa {
     background: rgba(27, 38, 59, 0.08);
-    color: #1B263B;
+    color: #1b263b;
 
     html[data-theme="dark"] & {
       background: rgba(119, 141, 169, 0.15);
-      color: #778DA9;
+      color: #778da9;
     }
   }
 
   &.rank {
     background: rgba(65, 90, 119, 0.08);
-    color: #415A77;
+    color: #415a77;
 
     html[data-theme="dark"] & {
       background: rgba(65, 90, 119, 0.2);
-      color: #778DA9;
+      color: #778da9;
     }
   }
 }
@@ -251,7 +274,9 @@ body.sticky-bottom-footer {
   align-items: center;
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--global-divider-color);
-  transition: background-color 0.2s ease, padding-left 0.3s ease;
+  transition:
+    background-color 0.2s ease,
+    padding-left 0.3s ease;
 
   &:last-child {
     border-bottom: none;
@@ -276,12 +301,12 @@ body.sticky-bottom-footer {
   justify-content: center;
   border-radius: 50%;
   margin-right: 1rem;
-  background: linear-gradient(135deg, #1B263B, #415A77);
+  background: linear-gradient(135deg, #1b263b, #415a77);
   color: #fff;
   font-size: 0.8rem;
 
   html[data-theme="dark"] & {
-    background: linear-gradient(135deg, #415A77, #778DA9);
+    background: linear-gradient(135deg, #415a77, #778da9);
   }
 }
 
